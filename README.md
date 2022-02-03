@@ -22,3 +22,9 @@ Inside config/database.php, replace this line for mysql
     ![Dashboard](https://i.postimg.cc/nh071TVr/screenshot-4.png)
 4. Blank Page
     ![Blank_Page](https://i.postimg.cc/B68V3X75/screenshot-5.png)
+
+# change
+
+public folder to admin / public folder
+change controller name to admin controller
+cut custom adminlte on navbar
