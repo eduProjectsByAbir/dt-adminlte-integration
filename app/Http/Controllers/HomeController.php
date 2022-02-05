@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        toastr()->success('Success Message');
         return view('admin.index');
     }
 

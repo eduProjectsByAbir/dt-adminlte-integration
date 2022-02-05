@@ -22,7 +22,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="User Avatar"
+                        <img src="{{ asset('backend/admin/dist/img/user1-128x128.jpg') }}" alt="User Avatar"
                             class="img-size-50 mr-3 img-circle">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
@@ -39,7 +39,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('dist/img/user8-128x128.jpg') }}" alt="User Avatar"
+                        <img src="{{ asset('backend/admin/dist/img/user8-128x128.jpg') }}" alt="User Avatar"
                             class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
@@ -56,7 +56,7 @@
                 <a href="#" class="dropdown-item">
                     <!-- Message Start -->
                     <div class="media">
-                        <img src="{{ asset('dist/img/user3-128x128.jpg') }}" alt="User Avatar"
+                        <img src="{{ asset('backend/admin/dist/img/user3-128x128.jpg') }}" alt="User Avatar"
                             class="img-size-50 img-circle mr-3">
                         <div class="media-body">
                             <h3 class="dropdown-item-title">
@@ -102,14 +102,14 @@
         </li>
         <li class="nav-item dropdown user-menu">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                <img src="{{ asset('dist/img/user2-160x160.jpg') }}"
+                <img src="{{ asset('backend/admin/dist/img/user2-160x160.jpg') }}"
                     class="user-image img-circle elevation-2" alt="User Image">
                 <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
                 <li class="user-header bg-primar">
-                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}"
+                    <img src="{{ asset('backend/admin/dist/img/user2-160x160.jpg') }}"
                         class="img-circle elevation-2" alt="User Image">
 
                     <p>
@@ -132,11 +132,6 @@
                     </form>
                 </li>
             </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                <i class="fas fa-th-large"></i>
-            </a>
         </li>
     </ul>
 </nav>
