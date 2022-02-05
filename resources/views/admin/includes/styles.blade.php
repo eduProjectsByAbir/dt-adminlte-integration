@@ -18,3 +18,6 @@
 <link rel="stylesheet" href="{{ asset('backend/admin/plugins/daterangepicker/daterangepicker.css')}}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{ asset('backend/admin/plugins/summernote/summernote-bs4.min.css')}}">
+{{-- Toster --}}
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+

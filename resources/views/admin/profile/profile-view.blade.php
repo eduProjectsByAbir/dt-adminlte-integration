@@ -33,7 +33,7 @@
                   <div class="card-body box-profile">
                     <div class="text-center">
                       <img class="profile-user-img img-fluid img-circle"
-                           src="{{ Auth::user()->dpicture }}"
+                           src="{{ asset(Auth::user()->dpicture) }}"
                            alt="User profile picture">
                     </div>
 

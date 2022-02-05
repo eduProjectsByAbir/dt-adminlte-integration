@@ -25,6 +25,6 @@ Inside config/database.php, replace this line for mysql
 
 # change
 
-public folder to admin / public folder
-change controller name to admin controller
-cut custom adminlte on navbar
+[x] public folder to admin / public folder
+[x] change controller name to admin controller
+[x] cut custom adminlte on navbar

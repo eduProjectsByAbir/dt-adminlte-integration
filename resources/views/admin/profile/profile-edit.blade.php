@@ -24,6 +24,13 @@
 
         <!-- Default box -->
         <div class="card">
+            <div id="successMessage">
+                @if(session()->has('error'))
+                    <div class="alert alert-warning">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
+            </div>
             <div class="card-body">
                 <div class="col-md-9 m-auto">
 
@@ -32,12 +39,13 @@
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 <img id="output" class="profile-user-img img-fluid img-circle"
-                                    src="{{ $user->dpicture }}" alt="User profile picture">
+                                    src=" {{ asset($user->dpicture) }}" alt="User profile picture">
                             </div>
                             {{-- Form starts --}}
-                            <form action="" class="form-group" enctype="multipart/form-data">
+                            <form action="{{ route('profile.update', Auth::user()->id) }}" class="form-group" method="POST" enctype="multipart/form-data">
+                                <input name="_method" type="hidden" value="PUT">
+
                                 @csrf
-                                @method('PUT')
                                 <h3 class="profile-username text-center">{{ $user->name }}</h3>
 
                                 <ul class="list-group list-group-unbordered mb-3">
