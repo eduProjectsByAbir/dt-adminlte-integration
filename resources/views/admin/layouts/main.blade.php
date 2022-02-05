@@ -60,6 +60,21 @@
 <script src="{{ asset('backend/admin/plugins/jqvmap/maps/jquery.vmap.usa.js')}}"></script>
 <!-- jQuery Knob Chart -->
 <script src="{{ asset('backend/admin/plugins/jquery-knob/jquery.knob.min.js')}}"></script>
+<!-- DataTables  & Plugins -->
+<script src="{{ asset('backend/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/jszip/jszip.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/pdfmake/pdfmake.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/pdfmake/vfs_fonts.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('backend/admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+{{-- sweetalert 2 --}}
+<script src="{{ asset('backend/admin/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
 <!-- daterangepicker -->
 <script src="{{ asset('backend/admin/plugins/moment/moment.min.js')}}"></script>
 <script src="{{ asset('backend/admin/plugins/daterangepicker/daterangepicker.js')}}"></script>
@@ -75,7 +90,7 @@
 <script src="{{ asset('backend/admin/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('backend/admin/dist/js/pages/dashboard.js')}}"></script>
-<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset('backend/admin/plugins/toastr/toastr.min.js') }}"></script>
 {!! Toastr::message() !!}
 @yield('js')
 </body>

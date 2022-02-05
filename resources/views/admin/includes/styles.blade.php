@@ -10,8 +10,14 @@
 <link rel="stylesheet" href="{{ asset('backend/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 <!-- JQVMap -->
 <link rel="stylesheet" href="{{ asset('backend/admin/plugins/jqvmap/jqvmap.min.css')}}">
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('backend/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{ asset('backend/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+<link rel="stylesheet" href="{{ asset('backend/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{ asset('backend/admin/dist/css/adminlte.min.css')}}">
+{{-- Sweetalert2 --}}
+<link rel="stylesheet" href="{{ asset('backend/admin/plugins/sweetalert2/sweetalert2.min.css') }}">
 <!-- overlayScrollbars -->
 <link rel="stylesheet" href="{{ asset('backend/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
 <!-- Daterange picker -->
@@ -19,5 +25,7 @@
 <!-- summernote -->
 <link rel="stylesheet" href="{{ asset('backend/admin/plugins/summernote/summernote-bs4.min.css')}}">
 {{-- Toster --}}
-<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+<link rel="stylesheet" href="{{ asset('backend/admin/plugins/toastr/toastr.min.css') }}">
+
+@yield('css')
 

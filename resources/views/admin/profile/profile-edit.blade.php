@@ -24,13 +24,6 @@
 
         <!-- Default box -->
         <div class="card">
-            <div id="successMessage">
-                @if(session()->has('error'))
-                    <div class="alert alert-warning">
-                        {{ session()->get('error') }}
-                    </div>
-                @endif
-            </div>
             <div class="card-body">
                 <div class="col-md-9 m-auto">
 
