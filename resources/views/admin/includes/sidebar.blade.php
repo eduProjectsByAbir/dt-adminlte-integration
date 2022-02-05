@@ -34,6 +34,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('students.index') }}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Students
+              </p>
+            </a>
+          </li>
           <li class="nav-header">EXAMPLES</li>
           <li class="nav-item">
             <a href="#" class="nav-link">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Artisan;
 
 
@@ -17,6 +18,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/{id}', [AdminProfileController::class, 'index'])->name('profile.view');
     Route::get('/profile/edit/{id}', [AdminProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile/update/{id}', [AdminProfileController::class, 'update'])->name('profile.update');
+    // Students Routes
+    Route::resources([
+        'students' => StudentController::class,
+    ]);
 
 });
 
