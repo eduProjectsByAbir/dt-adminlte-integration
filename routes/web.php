@@ -15,6 +15,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/starter', [AdminController::class, 'starter'])->name('starter');
     // Profile Routes
     Route::get('/profile/{id}', [AdminProfileController::class, 'index'])->name('profile.view');
+    Route::get('/profile/edit/{id}', [AdminProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/edit/{id}', [AdminProfileController::class, 'update'])->name('profile.update');
 
 });
 

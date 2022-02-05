@@ -33,27 +33,22 @@
                   <div class="card-body box-profile">
                     <div class="text-center">
                       <img class="profile-user-img img-fluid img-circle"
-                           src="../../dist/img/user4-128x128.jpg"
+                           src="{{ Auth::user()->dpicture }}"
                            alt="User profile picture">
                     </div>
 
-                    <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                    <p class="text-muted text-center">Software Engineer</p>
+                    <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
 
                     <ul class="list-group list-group-unbordered mb-3">
                       <li class="list-group-item">
-                        <b>Followers</b> <a class="float-right">1,322</a>
+                        <b>Registered at</b> <a class="float-right">{{ date('Y-M-d', strtotime(Auth::user()->created_at)) }}</a>
                       </li>
                       <li class="list-group-item">
-                        <b>Following</b> <a class="float-right">543</a>
-                      </li>
-                      <li class="list-group-item">
-                        <b>Friends</b> <a class="float-right">13,287</a>
+                        <b>Updated at</b> <a class="float-right">{{ date('Y-M-d H:i:s', strtotime(Auth::user()->updated_at)) }}</a>
                       </li>
                     </ul>
 
-                    <a href="#" class="btn btn-primary btn-block"><b>Edit Profile</b></a>
+                    <a href="{{ route('profile.edit', Auth::user()->id) }}" class="btn btn-primary btn-block"><b>Edit Profile</b></a>
                   </div>
                   <!-- /.card-body -->
                 </div>
