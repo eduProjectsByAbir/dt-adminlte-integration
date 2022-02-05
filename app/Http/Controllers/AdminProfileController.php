@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,6 +94,11 @@ class AdminProfileController extends Controller
 
     public function destroy($id)
     {
-        //
+        $data = Student::find($id);
+        if(file_exists('backend/admin/images/'.$data->image) AND !empty($data->image)){
+            unlink('backend/admin/images/'.$data->image);
+        }
+        $data->delete();
+        return redirect()->route('students.index')->with('success', 'Student Deleted!');
     }
 }

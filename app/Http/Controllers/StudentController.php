@@ -79,9 +79,10 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function edit(Student $student)
+    public function edit($id)
     {
-        //
+        $studentData = Student::find($id);
+        return view('admin.student.edit-student', compact('studentData'));
     }
 
     /**
