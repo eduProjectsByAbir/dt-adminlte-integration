@@ -12,7 +12,7 @@ class Student extends Model
     protected $fillable = [
         'name',
         'email',
-        'image',
+        'avatar',
         'password',
     ];
 
@@ -24,4 +24,15 @@ class Student extends Model
     protected $hidden = [
         'password',
     ];
+
+    // password meutator
+    public function setPasswordAttribute($password){
+
+        // checking empty password
+        if (trim($password) == '') {
+            return;
+        }
+        // encrypting using bcrypt
+        $this->attributes['password'] = bcrypt($password);
+    }
 }
