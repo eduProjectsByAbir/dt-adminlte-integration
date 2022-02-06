@@ -36,6 +36,7 @@ class StudentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -50,16 +51,14 @@ class StudentController extends Controller
         $student_data = new Student();
         $student_data->name = $request->name;
         $student_data->email = $request->email;
-        $imageName = time() . '.' . $request->avatar->extension();
-        $request->avatar->move(public_path('backend/admin/images/'), $imageName);
-        $avatar = 'backend/admin/images/' . $imageName;
+        $avatar = time() . '.' . $request->avatar->extension();
+        $request->avatar->move(public_path('backend/admin/images/'), $avatar);
+        $avatar = 'backend/admin/images/' . $avatar;
         $student_data->avatar = $avatar;
-        $student_data->password = Hash::make($request->password);
+        $student_data->password = bcrypt($request->password);
         $student_data->save();
         Toastr::success('WOW! New Student added successfully!', 'Created', ["positionClass" => "toast-top-center"]);
         return redirect()->route('students.index');
-
-
     }
 
     /**
@@ -92,9 +91,51 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, $id)
     {
-        //
+        // Data Validation
+        $request->validate([
+            'name' => 'required|string|min:2|max:35',
+            'email' => 'required|email|max:255|unique:students,email,'.$id,
+        ]);
+
+        // Validate password if want to change
+        if ($request->change_password == 1) {
+            $this->validate($request, [
+                'password'  => 'required|min:6',
+                'password_confirmation' => 'required|min:6|same:password'
+            ]);
+        }
+
+        // Validate image if want to profile image
+        if ($request->avatar) {
+            $request->validate([
+                'avatar' =>  'image|mimes:jpeg,png,jpg,gif'
+            ]);
+        }
+
+        $student = Student::FindOrFail($id);
+        $student->name = $request->name;
+        $student->email = $request->email;
+        if ($request->avater) {
+            $oldPicture = $student->avater;
+            if (file_exists($oldPicture)) {
+                if ($oldPicture != 'backend/images/default.png') {
+                    unlink($oldPicture);
+                }
+            }
+            $imageName = time() . '.' . $request->avater->extension();
+            $request->avater->move(public_path('backend/admin/images/'), $imageName);
+            $newPicture = 'backend/admin/images/' . $imageName;
+            $student->avater = $newPicture;
+        }
+        if ($request->password) {
+            $student->password = bcrypt($request->password);
+        }
+        $student->save();
+
+        Toastr::success('WOW! Your student info updated!', 'Update Success', ["positionClass" => "toast-top-center"]);
+        return redirect()->route('students.index');
     }
 
     /**
@@ -103,8 +144,16 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        //
+        // going to delete student data
+        $data = Student::find($id);
+        if(file_exists('backend/admin/images/'.$data->image) AND !empty($data->image)){
+            unlink('backend/admin/images/'.$data->image);
+        }
+        $data->delete();
+        Toastr::warning('Student deleted successfully!', 'Created', ["positionClass" => "toast-top-center"]);
+        return redirect()->route('students.index');
+
     }
 }

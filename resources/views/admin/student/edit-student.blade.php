@@ -63,11 +63,11 @@
                                     </li>
                                     {{-- image upload starts --}}
                                     <li class="list-group-item">
-                                        <label for="dpicture">Upload Image</label>
+                                        <label for="avatar">Upload Image</label>
                                         <input type="file" name="avatar"
-                                            class="form-control @error('dpicture') is-invalid @enderror" id="dpicture"
+                                            class="form-control @error('avatar') is-invalid @enderror" id="avatar"
                                             accept="image/*" onchange="loadFile(event)">
-                                        @error('dpicture')
+                                        @error('avatar')
                                             <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </li>
@@ -80,17 +80,6 @@
                                         onclick="changePassword()" id="change_password">
                                     </li>
                                     <div id="showPass" style="display: none">
-                                        {{-- Change password starts --}}
-                                        <li class="list-group-item">
-                                            <label for="current_password">Current Password</label>
-                                            <input type="password"
-                                                class="form-control @error('current_password') is-invalid @enderror"
-                                                name="current_password" id="current_password"
-                                                placeholder="Enter Your Current Password">
-                                            @error('current_password')
-                                                <span class="error invalid-feedback">{{ $message }}</span>
-                                            @enderror
-                                        </li>
                                         {{-- new password --}}
                                         <li class="list-group-item">
                                             <label for="password">New Password</label>
