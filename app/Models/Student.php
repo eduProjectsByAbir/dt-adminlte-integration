@@ -35,4 +35,10 @@ class Student extends Model
         // encrypting using bcrypt
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function getNameAttribute($name)
+    {
+        return ucfirst($name);
+    }
+
 }
