@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StudentStoreValidation;
+use App\Http\Requests\StudentUpdateValidation;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
@@ -19,16 +21,8 @@ class StudentController extends Controller
         return view('admin.student.create-student');
     }
 
-    public function store(Request $request)
+    public function store(StudentStoreValidation $request)
     {
-        $request->validate([
-            'name' => 'required|string|min:3|max:35',
-            'email' => 'required|email|max:255|unique:students,email',
-            'avatar' =>  'required|image|mimes:jpeg,png,jpg,gif',
-            'password'  => 'required|min:6|max:32',
-            'password_confirmation' => 'required|min:6|same:password'
-
-        ]);
 
         if ($request->hasFile('avatar')) {
             $avatar = $request->avatar->move('backend/uploads/', $request->avatar->hashName());
@@ -61,15 +55,9 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Student $student)
+    public function update(StudentUpdateValidation $request, Student $student)
     {
         if ($request) {
-            // validation
-            $request->validate([
-                'name' => 'required|string|min:2|max:35',
-                'email' => 'required|email|max:255|unique:students,email,' . $student->id,
-            ]);
-
             // updating data
             $student->update([
                 'name' => $request->name,
@@ -78,12 +66,7 @@ class StudentController extends Controller
         }
 
         // Validate password if want to change
-        if ($request->change_password == 1 && $request->filled('password')) {
-            $request->validate([
-                'password'  => 'required|min:6|max:35',
-                'password_confirmation' => 'required|min:6|same:password',
-            ]);
-
+        if ($request->change_password === 1) {
             // Updating password
             $student->update([
                 'password' => $request->password
@@ -92,9 +75,6 @@ class StudentController extends Controller
 
         // Validate image if want to profile image
         if ($request->hasFile('avatar')) {
-            $request->validate([
-                'avatar' =>  'image|mimes:jpeg,png,jpg,gif'
-            ]);
 
             $oldPicture = $student->avater;
             if (file_exists($oldPicture) && $oldPicture != 'backend/admin/images/default.png') {
