@@ -121,7 +121,7 @@
 
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                    <a href="{{ route('profile.view', Auth::user()->id) }}"
+                    <a href="{{ route('profile.index')}}"
                         class="btn btn-default btn-flat">Profile</a>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();"

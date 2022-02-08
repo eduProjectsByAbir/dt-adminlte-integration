@@ -11,13 +11,14 @@ Auth::routes();
 
 // Admin Controller
 Route::middleware(['auth'])->group(function () {
+    // dashboard routes
     Route::get('/', [AdminController::class, 'index'])->name('/');
     Route::get('/home', [AdminController::class, 'index'])->name('home');
     Route::get('/starter', [AdminController::class, 'starter'])->name('starter');
+
     // Profile Routes
-    Route::get('/profile/{id}', [AdminProfileController::class, 'index'])->name('profile.view');
-    Route::get('/profile/edit/{id}', [AdminProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('/profile/update/{id}', [AdminProfileController::class, 'update'])->name('profile.update');
+    Route::resource('profile', AdminProfileController::class)->only('index', 'edit', 'update' );
+
     // Students Routes
     Route::resources([
         '/students' => StudentController::class,
