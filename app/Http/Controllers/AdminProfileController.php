@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,86 +18,67 @@ class AdminProfileController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(User $profile)
     {
-        $user = User::FindOrFail(Auth::user()->id);
+        $user = $profile;
         return view('admin.profile.profile-edit')->with('user', $user);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $profile)
     {
-        // Data Validation
-        $request->validate([
-            'name' => 'required|string|min:2|max:35',
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->id()],
-        ]);
-
-        // Validate password if want to change
-        if ($request->change_password == 1) {
-            $this->validate($request, [
-                'current_password' => 'required',
-                'password'  => 'required|min:6',
-                'password_confirmation' => 'required|min:6|same:password'
-            ]);
-        }
-
-        if ($request->change_password == 1) {
-            $hashedpass = Auth::User()->password; // User Old Password
-            if (!Hash::check($request->current_password, $hashedpass)) {
-                Toastr::error('current password not match with your old password!', 'Password Error!', ["positionClass" => "toast-top-center"]);
-                return redirect()->back();
-            }
-        }
-
-        // Validate old Password And New Password Are Same
-        if ($request->change_password == 1) {
-            $hashedpass = Auth::User()->password; // User Old Password
-
-            if (Hash::check($request->password, $hashedpass)) {
-                Toastr::error('Opps! You entered same password!', 'Password Error!', ["positionClass" => "toast-top-center"]);
-                return redirect()->back();
-            }
-        }
-
-        // Validate image if want to profile image
-        if ($request->dpicture) {
+        if ($profile->id === Auth::user()->id) {
             $request->validate([
-                'dpicture' =>  'image|mimes:jpeg,png,jpg,gif'
+                'name' => 'required|string|min:2|max:35',
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,' . auth()->id()],
             ]);
-        }
+            // updating profile
+            $profile->name = $request->name;
+            $profile->email = $request->email;
 
-        $user = User::FindOrFail(Auth::user()->id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if ($request->dpicture) {
-            $oldPicture = $user->dpicture;
-            if (file_exists($oldPicture)) {
-                if ($oldPicture != 'backend/images/default.png') {
+            // Validate image if want to profile image
+            if ($request->hasFile('dpicture')) {
+                $request->validate([
+                    'dpicture' =>  'image|mimes:jpeg,png,jpg,gif'
+                ]);
+
+                $oldPicture = $profile->dpicture;
+                if (file_exists($oldPicture) && $oldPicture != 'backend/admin/images/default.png') {
+                    // unlink old image
                     unlink($oldPicture);
                 }
+                // save file to host
+                $dpicture = $request->dpicture->move('backend/uploads/', $request->dpicture->hashName());
+
+                //change picture
+                $profile->dpicture = $dpicture;
             }
-            $imageName = time() . '.' . $request->dpicture->extension();
-            $request->dpicture->move(public_path('backend/admin/images/'), $imageName);
-            $newPicture = 'backend/admin/images/' . $imageName;
-            $user->dpicture = $newPicture;
+            //if user want to change password
+            if ($request->change_password === 1) {
+                $request->validate([
+                    'current_password' => 'required',
+                    'password'  => 'required|min:6',
+                    'password_confirmation' => 'required|min:6|same:password'
+                ]);
+
+                // checking if current password is correct and both password are not same
+                $currentPass = Auth::User()->password;
+
+                if (!Hash::check($request->current_password, $currentPass)) {
+                    Toastr::error('current password not match with your old password!', 'Password Error!', ["positionClass" => "toast-top-center"]);
+                    return redirect()->back();
+                } elseif (Hash::check($request->password, $currentPass)) {
+                    Toastr::error('Opps! You entered same password!', 'Password Error!', ["positionClass" => "toast-top-center"]);
+                    return redirect()->back();
+                } else {
+                    // updating password
+                    $profile->password = Hash::make($request->password);
+                }
+            }
         }
-        if ($request->password) {
-            $user->password = Hash::make($request->password);
-        }
-        $user->save();
+
+        $profile->save();
 
         Toastr::success('WOW! Your profile updated successfully!', 'Update Success', ["positionClass" => "toast-top-center"]);
-        return redirect()->route('profile.view', $id);
-    }
-
-
-    public function destroy($id)
-    {
-        $data = Student::find($id);
-        if(file_exists('backend/admin/images/'.$data->image) AND !empty($data->image)){
-            unlink('backend/admin/images/'.$data->image);
-        }
-        $data->delete();
-        return redirect()->route('students.index')->with('success', 'Student Deleted!');
+        return redirect()->route('profile.index');
     }
 }

@@ -49,18 +49,27 @@
                                 <td>{{ $student->id }}</td>
                                 <td>{{ $student->name }}</td>
                                 <td>{{ $student->email }}</td>
-                                <td><img src="{{ asset($student->avatar) }}"
-                                        alt="Profile Image - 1" height="50px" width="50px"></td>
-                                <td><a href="{{ route('students.edit', $student->id) }}"
-                                        title="edit" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a> <a
-                                        href="{{ route('students.destroy', $student->id) }}"
-                                        id="delete" title="delete" class="btn btn-sm btn-danger"><i
-                                            class="fa fa-trash"></i></a>
-                                    <form id="delete-form" action="{{ route('students.destroy', $student->id) }}"
+                                <td>
+                                    <img src="{{ asset($student->avatar) }}"
+                                        alt="Profile Image - 1" height="50px" width="50px">
+                                    </td>
+                                <td>
+                                    <a href="{{ route('students.edit', $student->id) }}"
+                                        title="edit" class="btn btn-sm btn-warning">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a
+                                        href="{{$student->id}}" id="delete" title="delete" class="btn btn-sm btn-danger">
+                                        <i
+                                            class="fa fa-trash">
+                                        </i>
+                                    </a>
+                                    <form id="delete-form-{{$student->id}}" action="{{ route('students.destroy', $student->id) }}"
                                         method="POST" class="d-none">
                                         @method('DELETE')
                                         @csrf
                                     </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -75,11 +84,6 @@
                     </tfoot>
                 </table>
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                Footer
-            </div>
-            <!-- /.card-footer-->
         </div>
         <!-- /.card -->
 
@@ -104,6 +108,8 @@
     $(function () {
         $(document).on('click', '#delete', function (e) {
             e.preventDefault();
+            var id = $(this).attr('href');
+            var form = document.getElementById('delete-form-'+id);
             Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revart this!",
@@ -114,7 +120,7 @@
                 confirmButtonText: 'Yes, Delete it!'
             }).then((result) => {
                 if (result.value) {
-                    document.getElementById('delete-form').submit();
+                    form.submit();
                     Swal.fire(
                         'Deleted!',
                         'Your user has been Deleted!',
