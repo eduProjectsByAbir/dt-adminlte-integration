@@ -20,8 +20,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update/{id}', [AdminProfileController::class, 'update'])->name('profile.update');
     // Students Routes
     Route::resources([
-        'students' => StudentController::class,
-    ]);
+        '/students' => StudentController::class,
+    ], ['except' => 'show']);
 
 });
 
