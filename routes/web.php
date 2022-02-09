@@ -5,12 +5,15 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 
 
-Auth::routes();
+Auth::routes([
+    'verify' => true
+]);
 
 // Admin Controller
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     // dashboard routes
     Route::get('/', [AdminController::class, 'index'])->name('/');
     Route::get('/home', [AdminController::class, 'index'])->name('home');
