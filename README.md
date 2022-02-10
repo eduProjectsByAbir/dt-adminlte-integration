@@ -18,8 +18,12 @@ In Linux/Mac:
 `cp .env.example .env`
 - edit .env file and add database info
 - `php artisan key:generate`
-- `php artisan migrate`
+- `php artisan migrate:fresh -seed`
 - `php artisan serve`
+
+# Helpers
+- For Routes list visit **/routes**
+- For Artisan Command visit **/~artisan**
 
 # Preview
 
