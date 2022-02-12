@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Modules\Teacher\Entities\Teacher;
+use Modules\Teacher\Http\Requests\TeacherStoreRequest;
+use Modules\Teacher\Http\Requests\TeacherUpdateRequest;
 
 class TeacherController extends Controller
 {
@@ -34,14 +36,8 @@ class TeacherController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request)
+    public function store(TeacherStoreRequest $request)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:36|string',
-            'email' => 'required|unique:teachers,email|email',
-            'number' => 'required|numeric|min:10'
-        ]);
-
         $teacher = Teacher::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -49,7 +45,7 @@ class TeacherController extends Controller
         ]);
 
         if($teacher){
-            Toastr::success('WOW! New Student added successfully!', 'Created', ["positionClass" => "toast-top-center"]);
+            Toastr::success('WOW! Teacher added successfully!', 'Created');
             return redirect()->route('teachers.index');
         } else {
             Toastr::warning('Something is Wrong!', 'Error');
@@ -59,23 +55,14 @@ class TeacherController extends Controller
     }
 
     /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('teacher::show');
-    }
-
-    /**
      * Show the form for editing the specified resource.
      * @param int $id
      * @return Renderable
      */
     public function edit($id)
     {
-        return view('teacher::edit');
+        $teacher = Teacher::findOrFail($id);
+        return view('teacher::edit', compact('teacher'));
     }
 
     /**
@@ -84,9 +71,22 @@ class TeacherController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Teacher $teacher, Request $request)
+    public function update(TeacherUpdateRequest $request, $id)
     {
-        dd($teacher);
+
+        $teacher = Teacher::findOrFail($id)->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'number' => $request->number
+        ]);
+
+        if($teacher){
+            Toastr::success('WOW! Teacher updated successfully!', 'Created', ["positionClass" => "toast-top-center"]);
+            return redirect()->route('teachers.index');
+        } else {
+            Toastr::warning('Something is Wrong!', 'Error');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -96,6 +96,13 @@ class TeacherController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $teacher = Teacher::findOrFail($id)->delete();
+        if($teacher){
+            Toastr::success('WOW! Teacher Deleted!', 'Created', ["positionClass" => "toast-top-center"]);
+            return redirect()->route('teachers.index');
+        } else {
+            Toastr::warning('Something is Wrong!', 'Error');
+            return redirect()->back();
+        }
     }
 }

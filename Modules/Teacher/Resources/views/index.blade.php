@@ -38,6 +38,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Number</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -47,6 +48,7 @@
                                 <td>{{ $teacher->id }}</td>
                                 <td>{{ $teacher->name }}</td>
                                 <td>{{ $teacher->email }}</td>
+                                <td>{{ $teacher->number }}</td>
                                 <td>
                                     <a href="{{ route('teachers.edit', $teacher->id) }}"
                                         title="edit" class="btn btn-sm btn-warning">
@@ -58,7 +60,7 @@
                                             class="fa fa-trash">
                                         </i>
                                     </a>
-                                    <form id="delete-form-{{ $teacher->id }}" action=""
+                                    <form id="delete-form-{{ $teacher->id }}" action="{{ route('teachers.destroy', $teacher->id) }}"
                                         method="POST">
                                         @method('DELETE')
                                         @csrf
@@ -72,6 +74,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Number</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>
