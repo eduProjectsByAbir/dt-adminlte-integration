@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Modules\Teacher\Entities\Teacher;
-use Illuminate\Support\Facades\DB;
-use App\Models\User;
+
 use Carbon\Carbon;
 
 class AdminController extends Controller
