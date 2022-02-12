@@ -12,6 +12,12 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    // Overrideen sendEmailVerificationNotification implementation
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\Auth\QueuedVerifyEmail);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
