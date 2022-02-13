@@ -1,0 +1,227 @@
+[33mcommit b0f330af88903eb5923b20cc01e1f7ed749118cf[m[33m ([m[1;36mHEAD -> [m[1;32mModulesPkg[m[33m, [m[1;31morigin/ModulesPkg[m[33m)[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 12 17:55:57 2022 +0600
+
+    push
+
+[33mcommit e62ee869791b70f4caf43206c22251623f4a2b11[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 12 16:40:33 2022 +0600
+
+    update with chartjs
+
+[33mcommit d4d90be8b32528d87618ff39a453dc7c9bc917fa[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 12 13:51:46 2022 +0600
+
+    add modules package
+
+[33mcommit 08bad45bd5db9e37999a2c923a3a56f4b3954795[m[33m ([m[1;31morigin/updating[m[33m, [m[1;31morigin/ModulPkg[m[33m, [m[1;32mupdating[m[33m)[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 12 09:06:31 2022 +0600
+
+    update
+
+[33mcommit deae89aa214b11e3fbf895e3f3598cb608236ed4[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Thu Feb 10 15:01:21 2022 +0600
+
+    factory edited
+
+[33mcommit 5354323bdcfd77de7e12c42de3e9ab6602facb1b[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Thu Feb 10 12:25:12 2022 +0600
+
+    update readme
+
+[33mcommit 57651c7e0b8935be113899d033950eceb364e543[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Thu Feb 10 11:23:28 2022 +0600
+
+    added seeder for Students
+
+[33mcommit d194885f4e5e51bb407d2bcefff7f6e2527eab95[m[33m ([m[1;31morigin/blade-components[m[33m, [m[1;32mblade-components[m[33m)[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Wed Feb 9 17:44:53 2022 +0600
+
+    role base auth with middleware
+
+[33mcommit dc657b84ad623c7ff16661cd98affb6180719772[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Wed Feb 9 12:56:55 2022 +0600
+
+    login verify
+
+[33mcommit 3728593263ccc71c1de587f7833ca8254525316f[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Wed Feb 9 10:50:06 2022 +0600
+
+    send mail to gmail done!
+
+[33mcommit 75723ae30a6ed571c56e8985cba6fb1d36bc23f4[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 17:39:36 2022 +0600
+
+    update
+
+[33mcommit 66d702ae7e235dc2c7cd7cf1c8a58ca7b938c942[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 17:14:33 2022 +0600
+
+    form request validation
+
+[33mcommit c0c5d13fb7e1146550549773b6fa749b818bb5b1[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 15:59:04 2022 +0600
+
+    add
+
+[33mcommit 4c863294ed5c53e90b35789f15583ff95c0be5f8[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 15:58:54 2022 +0600
+
+    forgot password done
+
+[33mcommit cff87b06b096629d928b7a247071d772a838fa07[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 12:55:04 2022 +0600
+
+    added component
+
+[33mcommit 9625ddf47902566221b694f42aa872201e2a45e3[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 12:40:19 2022 +0600
+
+    user manu component
+
+[33mcommit 6f323733201d7b6433346ad01d6519cb548523f1[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 12:29:43 2022 +0600
+
+    updated readme
+
+[33mcommit 92075441175a141003a9eda1f0d8370431cd3aa5[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 12:09:18 2022 +0600
+
+    admin profile refactored
+
+[33mcommit 9446e234378d7606739f1a198d0ee1cc7196da8e[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 11:30:21 2022 +0600
+
+    code cleanup
+
+[33mcommit 421d8a9683d962ab50df2286213c14ceff12499f[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Tue Feb 8 11:22:49 2022 +0600
+
+    file delete bug solved
+
+[33mcommit 137597c4c68b077c99f90e83257b019b2ab81f55[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Mon Feb 7 17:50:38 2022 +0600
+
+    image removed
+
+[33mcommit b562a7248d594220007a31cca9978b03ef89772e[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Mon Feb 7 11:47:24 2022 +0600
+
+    mutators and accessoirs
+
+[33mcommit ae28d454874ab0ddaf656ac81ee9b1876ca3976f[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sun Feb 6 18:56:37 2022 +0600
+
+    StudentsCRUD with model and accessor
+
+[33mcommit 2f8466ca2c080f6dcc7b85f5c5ea1631c444ae57[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sun Feb 6 13:27:04 2022 +0600
+
+    packeges
+
+[33mcommit 8ee4feff717f14cc6ee299bfd2b2c3ea22e5a872[m[33m ([m[1;31morigin/StudentsCRUD[m[33m, [m[1;32mStudentsCRUD[m[33m)[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sun Feb 6 12:35:17 2022 +0600
+
+    Students CRUD
+
+[33mcommit 46e2269bca5c8151bf5b1dd0c2e5d47b3cd9f984[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 5 22:13:54 2022 +0600
+
+    update profile
+
+[33mcommit 27d5ab8cf87614f43024b210412d4f520ac6ba43[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 5 18:32:49 2022 +0600
+
+    CRUD create and read done
+
+[33mcommit 5c3797d0651c42bc7a330ba71279b9f64551ddc4[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 5 16:21:37 2022 +0600
+
+    init Students CRUD
+
+[33mcommit bf44e805bfea2781d75055eb816b854d8b792c74[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 5 15:41:13 2022 +0600
+
+    profile update done with toastr notification
+
+[33mcommit d18a108e4f3b6163eb59b6865e70f5ea45f67133[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 5 13:20:13 2022 +0600
+
+    adding files
+
+[33mcommit 13f3f652ce23c910bac8b2b7b113b8c709177bd2[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Sat Feb 5 10:59:47 2022 +0600
+
+    change password designed
+
+[33mcommit 70c3b98b2110eb384c60696dbc55c6e661b6a062[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Fri Feb 4 14:03:17 2022 +0600
+
+    profile templete
+
+[33mcommit 89538e47f65d1028a2d8dae9399de86a0f14dd46[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Thu Feb 3 17:31:38 2022 +0600
+
+    profile controller created and some bug fixed
+
+[33mcommit e8c570ef65162d5c3aa19cb38248941d54ee5555[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Thu Feb 3 16:29:34 2022 +0600
+
+    changed controller name
+
+[33mcommit d0b6424f46d2eda2504e750ed91abb8cbc331673[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Thu Feb 3 12:35:56 2022 +0600
+
+    adding preview in readme
+
+[33mcommit c8f0721f2a072bb1ae6f31bbcd181bbe7ebd30ed[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Thu Feb 3 12:27:41 2022 +0600
+
+    updating readme
+
+[33mcommit 6d998e68e63a2de37a1a34a20e4a0a1a48fb56fb[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Thu Feb 3 12:22:34 2022 +0600
+
+    adding
+
+[33mcommit 24cc55b610625ef3cc4cbc757ab174c5d29e81f4[m
+Author: Md. Abiruzzaman Molla <abiruzzaman.molla@gmail.com>
+Date:   Thu Feb 3 10:00:33 2022 +0600
+
+    ui auth and migrated
