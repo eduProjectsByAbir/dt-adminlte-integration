@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,9 @@ Route::middleware(['auth', 'verified', 'isAdmin'])->group(function () {
 
     // Ajax Calling data
     Route::post('/expense/income/data',[IncomeController::class, 'comparisonData']);
+
+    // Export Routes
+    Route::get('daily-students', [ExportController::class, 'yearlyStudents']);
 
 });
 
