@@ -4,6 +4,7 @@ namespace Modules\Teacher\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Teacher\Entities\Teacher;
 
 class TeacherDatabaseSeeder extends Seeder
 {

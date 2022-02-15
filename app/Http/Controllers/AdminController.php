@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Student;
 use Modules\Teacher\Entities\Teacher;
 
 use Carbon\Carbon;
@@ -39,6 +40,39 @@ class AdminController extends Controller
 
         $teachersdata = implode(', ', $userArr);
         return view('admin.index')->with('data', $teachersdata);
+    }
+
+    public function chartData(){
+        $students = Student::select('id', 'created_at')
+        ->get()
+        ->groupBy(function ($date) {
+            return Carbon::parse($date->created_at)->format('m');
+        });
+
+    $studentsCount = [];
+    $StudentsArr = [];
+
+    foreach ($students as $key => $value) {
+        $studentsCount[(int)$key] = count($value);
+    }
+
+    for ($i = 1; $i <= 12; $i++) {
+        if (!empty($studentsCount[$i])) {
+            $StudentsArr[$i] = $studentsCount[$i];
+        } else {
+            $StudentsArr[$i] = 0;
+        }
+    }
+
+    $userJoiningData = [];
+
+    foreach($StudentsArr as $student){
+        $userJoiningData[] = $student;
+    }
+    // return $StudentsArr;
+    $StudentsArr = json_encode($userJoiningData);
+
+    return view('admin.chart-data',compact('StudentsArr'));
     }
 
     public function starter()

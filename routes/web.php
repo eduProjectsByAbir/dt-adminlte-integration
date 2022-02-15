@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\IncomeController;
 
 Route::get('/', [HomeController::class, 'index'])->name('/');
 
@@ -29,6 +29,9 @@ Route::middleware(['auth', 'verified', 'isAdmin'])->group(function () {
     Route::resources([
         '/students' => StudentController::class,
     ], ['except' => 'show']);
+
+    // Ajax Calling data
+    Route::post('/expense/income/data',[IncomeController::class, 'comparisonData']);
 
 });
 

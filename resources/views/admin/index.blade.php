@@ -109,7 +109,41 @@
                 <!-- /.Left col -->
                 <!-- right col (We are only adding the ID to make the widgets sortable)-->
                 <section class="col-lg-5 connectedSortable">
-                    <!-- /.card -->
+                    {{-- <section class="content"> --}}
+                        <div class="container-fluid text-center">
+                            <div class="row">
+                                <div class="col-12">
+                                  <div class="card">
+                                    <div class="card-header">
+                                      <h3 class="card-title">Student Joining Comparison Data</h3>
+                                      <div class="card-tools">
+                                        <div class="input-group input-group-sm" style="width: 150px;">
+                                            <select name="" id="SelectDataToGet" class="form-control float-right">
+                                                <option value="today">Today</option>
+                                                <option value="yesterday">Yesterday</option>
+                                                <option value="thisweek">This Week</option>
+                                                <option value="lastweek">Last Week</option>
+                                                <option value="thismonth">This Month</option>
+                                                <option value="thisyear">This Year</option>
+                                                <option value="lastyear">Last Year</option>
+                                            </select>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- /.card-header -->
+                                    <div class="card-body card-header d-flex justify-content-center table-responsive p-0 mt-2">
+                                        <div id="ComparisonChart" class="mt-4 mb-4"></div>
+                                    </div>
+                                    <div class="d-flex justify-content-center p-4">
+                                        <div class="list-group-item" id="income"></div>
+                                        <div class="list-group-item ml-4" id="expense"></div>
+                                    </div>
+                                    </div>
+                                  <!-- /.card -->
+                                </div>
+                            </div>
+                        </div>
+                    {{-- </section> --}}
                 </section>
                 <!-- right col -->
             </div>
@@ -121,7 +155,9 @@
 @endsection
 
 @section('js')
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
+
 const ctx = document.getElementById('myChart');
 const myChart = new Chart(ctx, {
     type: 'bar',
@@ -157,5 +193,61 @@ const myChart = new Chart(ctx, {
         }
     }
 });
+</script>
+
+<script>
+    // <!--+==== Ajax ====+-->
+        var value = 'today';
+         // <!--+==== Page Load ====+-->
+        GetData(value);
+         // <!--+==== When Select ====+-->
+        $('#SelectDataToGet').on('change', function () {
+            this.value = $('#SelectDataToGet').val();
+            GetData(this.value);
+        });
+         // <!--+==== Ajax ====+-->
+        function GetData(value){
+            $.ajax(
+            {
+                url: "/expense/income/data",
+                dataType: "JSON",
+                type: 'POST',
+                data: {
+                    '_token': $('meta[name=csrf-token]').attr("content"),
+                    "value": value
+                },
+                success:function(data){
+                    $("#income").html('Income: '+ data.income + '$');
+                    $("#expense").html('Expense: '+ data.expense + '$');
+                    var json = [data.income,data.expense]
+                    // <!--+==== Chart ====+-->
+                    var options = {
+                    series: json,
+                    chart: {
+                    width: 380,
+                    type: 'pie',
+                    },
+                    labels: ['Income','Expense'],
+                    colors:["#008000", "#FF0000"],
+                    responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                        width: 200
+                        },
+                        legend: {
+                        position: 'bottom'
+                        }
+                    }
+                    }]
+                    };
+                    // <!--+==== Chart Render ====+-->
+                    $("#ComparisonChart").html('');
+                    var chart = new ApexCharts(document.querySelector("#ComparisonChart"), options);
+                    console.log(chart);
+                    chart.render();
+                }
+            });
+        }
 </script>
 @endsection
