@@ -35,7 +35,8 @@ Route::middleware(['auth', 'verified', 'isAdmin'])->group(function () {
     Route::post('/expense/income/data',[IncomeController::class, 'comparisonData']);
 
     // Export Routes
-    Route::get('daily-students', [ExportController::class, 'yearlyStudents']);
+    Route::get('export-data', [ExportController::class, 'index']);
+    Route::post('export-data/students', [ExportController::class, 'getStudentReportType'])->name('export-student-data');
 
 });
 

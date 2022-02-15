@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Support\Carbon;
+use Symfony\Component\HttpFoundation\Request;
 
 class ExportController extends Controller
 {
+
+    public function index(){
+        return view('admin.export.index');
+    }
+
+    public function getStudentReportType(Request $request){
+        if($request->students == 'daily'){
+            return $this->dailyStudents();
+        }
+    }
+
     public function dailyStudents(){
         return json_decode(Student::whereDate('created_at', Carbon::today())->get(['name','created_at']));
     }
